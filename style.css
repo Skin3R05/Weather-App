@@ -44,3 +44,23 @@ button:hover {
 .hidden {
     display: none;
 }
+
+/* Style for icons */
+
+#icon {
+  width: 96px;   
+  height: 96px;
+  display: block;
+  margin: 8px auto;
+  filter: drop-shadow(0 6px 12px rgba(0,0,0,0.15));
+  transition: transform 220ms ease, opacity 220ms ease;
+  opacity: 0;
+  transform: translateY(6px);
+}
+
+/* When weather-result visible, animate icon in */
+.weather-result.visible #icon,
+.weather-result:not(.hidden) #icon {
+  opacity: 1;
+  transform: translateY(0);
+}
