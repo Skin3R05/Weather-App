@@ -8,6 +8,22 @@ body {
     margin: 0;
     color: #fff;
 }
+
+/* Default animated background BEFORE search */
+body.default-bg {
+    background: linear-gradient(-45deg, #6db3f2, #1e69de, #4facfe, #00f2fe);
+    background-size: 400% 400%;
+    animation: gradientMove 12s ease infinite;
+}
+
+/* Gradient animation */
+@keyframes gradientMove {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
+
 .container {
     background: rgba(255, 255, 255, 0.1);
     padding: 25px;
