@@ -55,6 +55,8 @@ function showWeather(data) {
 
     // Icon code (example: "01d")
     const code = data.weather[0].icon;
+    changeBackground(code);
+
 
     // Map → SVG
     const fileName = iconMap[code] || "unknown.svg";
@@ -109,3 +111,40 @@ const iconMap = {
     "50d": "mist.svg",
     "50n": "mist.svg"
 };
+
+// Backgrounds regarding live Weather cast
+
+const bgMap = {
+    "01d": "linear-gradient(to bottom, #f9d423, #ff4e50)",      // sunny day
+    "01n": "linear-gradient(to bottom, #0f2027, #203a43, #2c5364)", // clear night
+
+    "02d": "linear-gradient(to bottom, #a1c4fd, #c2e9fb)",       // few clouds day
+    "02n": "linear-gradient(to bottom, #434343, #000000)",       // few clouds night
+
+    "03d": "linear-gradient(to bottom, #d7d2cc, #304352)",       // scattered clouds
+    "03n": "linear-gradient(to bottom, #232526, #414345)",
+
+    "04d": "linear-gradient(to bottom, #757f9a, #d7dde8)",       // broken clouds
+    "04n": "linear-gradient(to bottom, #232526, #414345)",
+
+    "09d": "linear-gradient(to bottom, #4b79a1, #283e51)",       // drizzle
+    "09n": "linear-gradient(to bottom, #2c3e50, #4ca1af)",
+
+    "10d": "linear-gradient(to bottom, #005c97, #363795)",       // rain
+    "10n": "linear-gradient(to bottom, #232526, #414345)",
+
+    "11d": "linear-gradient(to bottom, #373b44, #4286f4)",       // thunderstorm
+    "11n": "linear-gradient(to bottom, #141e30, #243b55)",
+
+    "13d": "linear-gradient(to bottom, #e6dada, #274046)",       // snow
+    "13n": "linear-gradient(to bottom, #000428, #004e92)",
+
+    "50d": "linear-gradient(to bottom, #757f9a, #d7dde8)",       // mist
+    "50n": "linear-gradient(to bottom, #3e5151, #decba4)"
+};
+
+function changeBackground(code) {
+    const gradient = bgMap[code] || "linear-gradient(to bottom, #6db3f2, #1e69de)";
+    document.body.style.background = gradient;
+    document.body.style.transition = "background 0.6s ease";
+}
