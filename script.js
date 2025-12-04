@@ -40,9 +40,22 @@ function showWeather(data) {
     document.querySelector(".weather-result").classList.remove("hidden");
 }
 
-function showError() {
+function showError(message = "City not found") {
     document.querySelector(".weather-result").classList.add("hidden");
-    document.getElementById("error-msg").classList.remove("hidden");
+
+    const errorMsg = document.getElementById("error-msg");
+    errorMsg.textContent = message;
+    errorMsg.classList.remove("hidden");
 }
+
+// To search by clicking "Enter"
+
+document.getElementById("city-input").addEventListener("keypress", function (e) {
+    if (e.key === "Enter") {
+        const city = document.getElementById("city-input").value;
+        if (city === "") return;
+        getWeather(city);
+    }
+});
 
 
